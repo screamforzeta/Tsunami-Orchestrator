@@ -194,6 +194,7 @@ La directory `Vulnerable_env/` contiene ambienti di test configurati con `docker
 Alcune immagini sono prese dal repository [VulHub](https://github.com/vulhub/vulhub); queste devono essere costruite localmente, ma per farlo basta eseguire `./build_images.sh` in `Vuln_env/` per scaricare i dati necessari. Successivamente, esegui il comando `docker compose up` per avviare l'intero ambiente.
 
 **N.B.**: Per comodità, ho creato una rete esterna chiamata **Vuln_net** all'interno del file compose, con indirizzo **192.168.147.0**; questo perché è un indirizzo raramente utilizzato e quindi non dovrebbe interferire con le reti locali esistenti. In caso di problemi, modifica semplicemente l'indirizzo nel file `docker-compose.yaml`.
+
 **Alcuni docker compose sono buildati localmente e non funzionano su architetture Linux Arm64**
 
 Per scansionare la rete vulnerabile:
@@ -281,9 +282,3 @@ pip install -r requirements.txt
 * `Tsunami_outputs/`
 * `Vulnerable_env/`
 * `tsunami-security-scanner/`
-
----
-
-## Licenza
-
-Questo progetto è rilasciato sotto licenza Apache 2.0. Per dettagli, consulta il file LICENSE.md.

@@ -1,0 +1,15 @@
+# Lista di host da scansionare
+
+192.168.1.1
+192.168.1.10
+10.0.0.0/24
+scanme.nmap.org
+
+# Commento ignorato
+172.16.0.5
+
+NOT TO DO:
+192.168.1.500               # IP non valido
+not_a_hostname              # Hostname non risolvibile
+192.168.1.1/33              # CIDR errato
+192.168.1.1, 192.168.1.2    # Più IP in una riga

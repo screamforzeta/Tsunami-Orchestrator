@@ -1,0 +1,123 @@
+services:
+  VA-jupyter-notebook-vuln:
+    image: jupyter/base-notebook:latest
+    networks:
+      - vuln_net
+    ports:
+      - 8888:8888
+    command: start-notebook.sh --NotebookApp.token=''
+    healthcheck:
+      timeout: 10s
+      retries: 3
+      start_period: 30s
+    
+  VA-jupyter-notebook-novuln:
+    image: jupyter/base-notebook:latest
+    networks:
+      - vuln_net
+    ports:
+      - 8889:8888
+    healthcheck:
+      timeout: 10s
+      retries: 3
+      start_period: 30s
+  
+  CVE-2017-5638:
+    image: jrrdev/cve-2017-5638:latest
+    networks:
+      - vuln_net
+    healthcheck:
+      timeout: 10s
+      retries: 3
+      start_period: 30s
+    ulimits:
+      nofile:
+        soft: 65536
+        hard: 65536
+  
+  db:
+    # We use a mariadb image which supports both amd64 & arm64 architecture
+    image: mariadb:10.6.4-focal
+    # If you really want to use MySQL, uncomment the following line
+    #image: mysql:8.0.27
+    command: '--default-authentication-plugin=mysql_native_password'
+    volumes:
+      - db_data:/var/lib/mysql
+    restart: always
+    environment:
+      - MYSQL_ROOT_PASSWORD=somewordpress
+      - MYSQL_DATABASE=wordpress
+      - MYSQL_USER=wordpress
+      - MYSQL_PASSWORD=wordpress
+    networks:
+      - vuln_net
+
+  wordpress:
+    image: wordpress:latest
+    volumes:
+      - wp_data:/var/www/html
+    ports:
+      - 80:80
+    restart: always
+    environment:
+      - WORDPRESS_DB_HOST=db
+      - WORDPRESS_DB_USER=wordpress
+      - WORDPRESS_DB_PASSWORD=wordpress
+      - WORDPRESS_DB_NAME=wordpress
+    networks:
+      - vuln_net
+
+  drupal-cve-2018-7600:
+    image: vulhub/drupal:8.5.0
+    networks:
+      - vuln_net
+    ports:
+      - 8081:80
+    ulimits:
+      nofile:
+        soft: 65536
+        hard: 65536
+
+  jenkins-cve-2017-1000353:
+    image: vulhub/jenkins:2.46.1
+    networks:
+      - vuln_net
+    ports:
+      - 8084:8080
+    ulimits:
+      nofile:
+        soft: 65536
+        hard: 65536
+
+  elasticsearch-cve-2015-1427:
+    image: vulhub/elasticsearch:1.4.2
+    networks:
+      - vuln_net
+    ports:
+      - 9200:9200
+    ulimits:
+      nofile:
+        soft: 65536
+        hard: 65536
+
+  liferay-cve-2020-7961:
+    image: vulhub/liferay-portal:7.2.0-ga1
+    networks:
+      - vuln_net
+    ports:
+      - 8082:8080
+    ulimits:
+      nofile:
+        soft: 65536
+        hard: 65536
+      
+volumes:
+  db_data:
+  wp_data:
+
+networks:
+  vuln_net:
+    name: vuln_net
+    ipam:
+      config:
+        - subnet: "192.168.147.0/24"

@@ -1,0 +1,12 @@
+{
+    #Nome dell'immagine che si andrà ad utilizzare per il container
+    "docker_image": "...",
+    #Cartella dove verranno salvati i file contenenti gli IP attivi e non attivi
+    "preliminar_scan_results_dir": "...",
+    #Cartella dove verranno salvati i file JSON parsati dal log parser
+    "parsed_report_dir": "...",
+    #Cartella dove il log parser prende i JSON di output di tsunami per analizzarli
+    "input_directory": "...",
+    #Cartella dove verranno salvati i file JSON parsati dal log parser
+    "output_folder": "..."
+}

@@ -1,0 +1,6 @@
+[submodule "tsunami-security-scanner"]
+	path = tsunami-security-scanner
+	url = https://github.com/google/tsunami-security-scanner.git
+[submodule "tsunami-security-scanner-plugins"]
+	path = tsunami-security-scanner-plugins
+	url = https://github.com/google/tsunami-security-scanner-plugins.git

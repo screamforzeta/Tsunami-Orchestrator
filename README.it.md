@@ -105,7 +105,7 @@ Per visualizzare tutte le dipendenze richieste da questo programma, consulta la 
 * Clona il repository:
 
 ```bash
-git clone --recurse-submodules https://github.com/Amplifon-Organization/Tsunami-Orchestrator.git
+git clone --recurse-submodules https://github.com/screamforzeta/Tsunami-Orchestrator.git
 ```
 
 * Installa Docker:

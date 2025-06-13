@@ -105,7 +105,7 @@ To view all the dependencies required by this program, refer to the dedicated se
 * Clone the repository:
 
 ```bash
-git clone --recurse-submodules https://github.com/Amplifon-Organization/Tsunami-Orchestrator.git
+git clone --recurse-submodules https://github.com/screamforzeta/Tsunami-Orchestrator.git
 ```
 
 * Install Docker:
@@ -120,7 +120,7 @@ docker build -t tsunami:latest ./tsunami-security-scanner
 docker build -t orch:latest .
 ```
 
-**Note:** In some situations, during the Docker image build process, you may encounter errors such as:Add commentMore actions
+**Note:** In some situations, during the Docker image build process, you may encounter errors such as: 
 ```bash
 E: Unable to locate package nmap
 E: Unable to locate package ncrack
@@ -177,7 +177,7 @@ Then run:
 sudo /path/to/venv/bin/python src/GUI/orchestrator_GUI.py
 ```
 
-### Docker Volumes ExplanationAdd commentMore actions
+### Docker Volumes Explanation
 When running the program via Docker, it is possible (and recommended) to mount certain directories from the local system as volumes inside the container. Each volume serves a specific purpose:
 
    * Parsed_Report: Directory where the final results of the execution will be saved, specifically the Excel file containing all relevant information collected during the scan.

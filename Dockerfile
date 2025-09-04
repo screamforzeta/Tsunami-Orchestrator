@@ -1,7 +1,7 @@
 FROM tsunami:latest
 
 RUN apt-get update \
- && apt-get install -y nmap python3 python3-pip \
+ && apt-get install -y nmap python3 python3-pip python3-tk\
  #aggiungi il ping per debug
  && apt-get install -y iputils-ping \
  #

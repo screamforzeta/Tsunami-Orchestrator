@@ -2,4 +2,3 @@ numpy
 openpyxl
 rich
 customtkinter
-tkinter
